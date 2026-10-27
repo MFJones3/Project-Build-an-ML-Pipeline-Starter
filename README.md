@@ -179,3 +179,19 @@ Please, make sure all steps are using **the same** python version and that you h
 ## License
 
 [License](LICENSE.txt)
+
+
+## Completed Project and Submission Links
+
+This project implements a reproducible machine learning pipeline to predict short-term rental prices in New York City. It uses MLflow to orchestrate data cleaning, data validation, train/test splitting, Random Forest training, and evaluation. Weights & Biases tracks experiment runs and versioned data/model artifacts.
+
+- GitHub repository: https://github.com/MFJones3/Project-Build-an-ML-Pipeline-Starter
+- Weights & Biases project: https://wandb.ai/mfjones3-a/nyc_airbnb
+
+### Final Held-Out Test Results
+
+- Model: Random Forest Regressor
+- R-squared (R2): 0.5647
+- Mean Absolute Error (MAE): $33.85
+
+The final model was promoted to the `prod` alias in Weights & Biases and evaluated using the held-out test dataset.
