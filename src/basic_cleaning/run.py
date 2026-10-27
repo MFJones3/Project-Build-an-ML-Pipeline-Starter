@@ -34,7 +34,11 @@ def go(args):
     # Only implement this step when reaching Step 6: Pipeline Release and Updates
     # in the project.
     # Add longitude and latitude filter to allow test_proper_boundaries to pass
-    # ENTER CODE HERE
+    # Remove listings outside the accepted NYC geographic boundaries.
+    df = df[
+        df["longitude"].between(-74.25, -73.50)
+        & df["latitude"].between(40.50, 41.20)
+    ].copy()
 
     # Save the cleaned data
     df.to_csv('clean_sample.csv',index=False)
