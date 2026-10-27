@@ -17,6 +17,16 @@ entry_points:
         description: Threshold for the KL divergence test on the neighborhood group column
         type: float
 
+      min_ratio:
+        description: Minimum acceptable row-count ratio
+        type: float
+        default: 0.9
+
+      max_ratio:
+        description: Maximum acceptable row-count ratio
+        type: float
+        default: 1.1
+
       min_price:
         description: Minimum accepted price
         type: float
@@ -25,4 +35,4 @@ entry_points:
         description: Maximum accepted price
         type: float
 
-    command: "pytest . -vv --csv {csv} --ref {ref} --kl_threshold {kl_threshold} --min_price {min_price} --max_price {max_price}"
+    command: "pytest . -vv --csv {csv} --ref {ref} --kl_threshold {kl_threshold} --min_price {min_price} --max_price {max_price} --min_ratio {min_ratio} --max_ratio {max_ratio}"

@@ -90,8 +90,8 @@ def test_similar_neigh_distrib(data: pd.DataFrame, ref_data: pd.DataFrame, kl_th
 def test_row_count(
     data: pd.DataFrame,
     ref_data: pd.DataFrame,
-    min_ratio: float = 0.9,
-    max_ratio: float = 1.1,
+    min_ratio: float,
+    max_ratio: float,
 ) -> None:
     """
     Check that the current dataset's row count is within

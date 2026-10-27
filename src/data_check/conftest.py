@@ -9,6 +9,8 @@ def pytest_addoption(parser):
     parser.addoption("--kl_threshold", action="store")
     parser.addoption("--min_price", action="store")
     parser.addoption("--max_price", action="store")
+    parser.addoption("--min_ratio", action="store", default=0.9, type=float)
+    parser.addoption("--max_ratio", action="store", default=1.1, type=float)
 
 
 @pytest.fixture(scope='session')
@@ -69,3 +71,13 @@ def max_price(request):
         pytest.fail("You must provide max_price")
 
     return float(max_price)
+
+
+@pytest.fixture(scope="session")
+def min_ratio(request):
+    return request.config.getoption("--min_ratio")
+
+
+@pytest.fixture(scope="session")
+def max_ratio(request):
+    return request.config.getoption("--max_ratio")

@@ -75,6 +75,8 @@ def go(config: DictConfig):
                     "kl_threshold": config["data_check"]["kl_threshold"],
                     "min_price": config["etl"]["min_price"],
                     "max_price": config["etl"]["max_price"],
+                    "min_ratio": config["data_check"]["min_ratio"],
+                    "max_ratio": config["data_check"]["max_ratio"],
                 },
             )
 
