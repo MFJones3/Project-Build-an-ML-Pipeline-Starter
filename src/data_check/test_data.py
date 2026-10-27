@@ -87,3 +87,54 @@ def test_similar_neigh_distrib(data: pd.DataFrame, ref_data: pd.DataFrame, kl_th
 ########################################################
 # Implement here test_row_count and test_price_range   #
 ########################################################
+def test_row_count(
+    data: pd.DataFrame,
+    ref_data: pd.DataFrame,
+    min_ratio: float = 0.9,
+    max_ratio: float = 1.1,
+) -> None:
+    """
+    Check that the current dataset's row count is within
+    an acceptable range of the reference dataset.
+
+    Args:
+        data: Current dataset to validate.
+        ref_data: Reference dataset for comparison.
+        min_ratio: Minimum acceptable row-count ratio.
+        max_ratio: Maximum acceptable row-count ratio.
+    """
+    reference_count = len(ref_data)
+    current_count = len(data)
+
+    assert reference_count > 0, "Reference dataset is empty"
+
+    ratio = current_count / reference_count
+
+    assert min_ratio <= ratio <= max_ratio, (
+        f"Row-count ratio {ratio:.2f} is outside "
+        f"the allowed range [{min_ratio}, {max_ratio}]"
+    )
+
+def test_price_range(
+    data: pd.DataFrame,
+    min_price: float,
+    max_price: float,
+) -> None:
+    """
+    Verify that all nightly rental prices fall within
+    the accepted price range.
+
+    Args:
+        data: Dataset to validate.
+        min_price: Minimum acceptable nightly price.
+        max_price: Maximum acceptable nightly price.
+    """
+    assert min_price <= max_price, "Invalid price boundaries"
+
+    assert data["price"].notna().all(), (
+        "Dataset contains missing rental prices"
+    )
+
+    assert data["price"].between(min_price, max_price).all(), (
+        f"Rental prices must be between ${min_price} and ${max_price}"
+    )
